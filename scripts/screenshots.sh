@@ -26,13 +26,11 @@ install_sample
 set_night_mode light
 if [ "$device" = tablet ]; then
   ensure_landscape
-  fresh_launch --es scene tablet
-  wait_for_scene tablet
+  launch_scene tablet
   capture "tablet-detail" "$(expected_text tablet)"
 else
   for scene in feed search reports; do
-    fresh_launch --es scene "$scene"
-    wait_for_scene "$scene"
+    launch_scene "$scene"
     capture "phone-$scene" "$(expected_text "$scene")"
   done
 fi

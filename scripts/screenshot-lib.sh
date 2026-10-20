@@ -46,6 +46,8 @@ wait_for_scene() {
     if printf '%s' "$log" | grep -q "SCENE_FAILED"; then
       echo "The $scene scene failed to load:" >&2
       printf '%s\n' "$log" | grep "SCENE_" >&2
+      # A freshly booted emulator sometimes has no network yet; the caller may launch the scene again.
+      if printf '%s' "$log" | grep -q "SCENE_FAILED.*Could not reach"; then return 2; fi
       exit 1
     fi
     if printf '%s' "$log" | grep -q "SCENE_READY $scene"; then
@@ -165,5 +167,21 @@ ensure_landscape() {
     fi
   done
   echo "Could not put the display in landscape ($size)." >&2
+  exit 1
+}
+
+# Launches a scene and waits for it. When the emulator could not reach the API (its network is sometimes not up
+# right after boot), waits and launches again, up to three times. Any other failure ends the run.
+launch_scene() {
+  local scene="$1" attempt status
+  for attempt in 1 2 3; do
+    fresh_launch --es scene "$scene"
+    status=0
+    wait_for_scene "$scene" || status=$?
+    [ "$status" -eq 0 ] && return 0
+    echo "Network not ready (attempt $attempt); trying the $scene scene again in 20 s." >&2
+    sleep 20
+  done
+  echo "The $scene scene could not reach the API after 3 attempts." >&2
   exit 1
 }
