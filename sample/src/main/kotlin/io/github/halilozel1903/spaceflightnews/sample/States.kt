@@ -30,7 +30,8 @@ suspend fun <T> load(block: suspend () -> T): Load<T> = try {
 } catch (e: CancellationException) {
     throw e
 } catch (e: SpaceflightNewsException.Network) {
-    Load.Failed("Could not reach the Spaceflight News API. Check your connection.")
+    val cause = e.cause?.let { (it::class.simpleName ?: "Error") + (it.message?.let { m -> ": $m" } ?: "") }
+    Load.Failed("Could not reach the Spaceflight News API. Check your connection." + (cause?.let { " ($it)" } ?: ""))
 } catch (e: SpaceflightNewsException) {
     Load.Failed(e.message ?: "The Spaceflight News API returned an error.")
 }

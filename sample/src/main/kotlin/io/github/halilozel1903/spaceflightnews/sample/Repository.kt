@@ -72,17 +72,18 @@ object Repositories {
     private var live: NewsRepository? = null
     private var scenes: NewsRepository? = null
 
-    private fun client(retries: Int) = SpaceflightNewsClient {
+    private fun client(retries: Int, timeoutMillis: Long) = SpaceflightNewsClient {
         // Shares OkHttp with Coil.
         engine = OkHttp.create()
         userAgent = "spaceflight-news-kotlin-sample/1.0.0 (+https://github.com/halilozel1903/spaceflight-news-kotlin)"
         this.retries = retries
+        requestTimeoutMillis = timeoutMillis
     }
 
     @Synchronized
-    fun live(): NewsRepository = live ?: NewsRepository(client(retries = 2)).also { live = it }
+    fun live(): NewsRepository = live ?: NewsRepository(client(retries = 2, timeoutMillis = 30_000)).also { live = it }
 
-    /** Screenshot scenes: more retries for a busy CI network. */
+    /** Screenshot scenes: more retries and a longer timeout (searches can be slow) for a busy CI network. */
     @Synchronized
-    fun scenes(): NewsRepository = scenes ?: NewsRepository(client(retries = 4)).also { scenes = it }
+    fun scenes(): NewsRepository = scenes ?: NewsRepository(client(retries = 4, timeoutMillis = 90_000)).also { scenes = it }
 }

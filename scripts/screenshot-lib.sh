@@ -40,7 +40,7 @@ fresh_launch() {
 # Waits until the scene reports that it is complete. Fails on an error state or after a timeout, so a
 # screen that did not load never replaces a good screenshot.
 wait_for_scene() {
-  local scene="$1" timeout="${2:-150}" log=""
+  local scene="$1" timeout="${2:-300}" log=""
   for _ in $(seq 1 "$timeout"); do
     log="$(adb logcat -d -s "$SCENE_TAG:*" 2> /dev/null || true)"
     if printf '%s' "$log" | grep -q "SCENE_FAILED"; then
