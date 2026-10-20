@@ -97,7 +97,8 @@ expect_on_screen() {
   if [ -z "$xml" ]; then
     echo "Warning: could not dump the UI to look for \"$text\"." >&2
   elif ! printf '%s' "$xml" | grep -qF "$text"; then
-    echo "\"$text\" is not on screen; the scene did not appear." >&2
+    echo "\"$text\" is not on screen; the scene did not appear. Texts on screen:" >&2
+    printf '%s' "$xml" | grep -oE '(text|content-desc)="[^"]+"' | head -60 >&2 || true
     exit 1
   fi
 }

@@ -193,6 +193,12 @@ private fun FeedList(
     }
     // Without a search the newest item leads as the top story (with its site initial when it has no image).
     val showHero = feed.search.isEmpty()
+    // Some sites use one stock picture for every post (Boeing's and NASA's station reports do). A picture that an
+    // item above already showed is not repeated; that row shows its headline only.
+    val repeatedImages: Set<Int> = run {
+        val seen = HashSet<String>()
+        items.filter { it.imageUrl.isNotBlank() && !seen.add(it.imageUrl) }.mapTo(HashSet()) { it.id }
+    }
     LazyColumn(state = listState, contentPadding = PaddingValues(bottom = 24.dp)) {
         if (showHero) {
             item(key = "hero") {
@@ -213,7 +219,7 @@ private fun FeedList(
         }
         val rest = if (showHero) items.drop(1) else items
         items(rest, key = { it.id }) { item ->
-            StoryRow(item, selected = selected?.id == item.id, onClick = { onSelect(item) })
+            StoryRow(item, showImage = item.id !in repeatedImages, selected = selected?.id == item.id, onClick = { onSelect(item) })
             HorizontalDivider(Modifier.padding(start = 16.dp), color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.6f))
         }
         item(key = "footer") {
@@ -299,7 +305,7 @@ private fun Hero(item: NewsItem, selected: Boolean, onClick: () -> Unit) {
 }
 
 @Composable
-private fun StoryRow(item: NewsItem, selected: Boolean, onClick: () -> Unit) {
+private fun StoryRow(item: NewsItem, showImage: Boolean, selected: Boolean, onClick: () -> Unit) {
     Row(
         Modifier
             .fillMaxWidth()
@@ -325,12 +331,14 @@ private fun StoryRow(item: NewsItem, selected: Boolean, onClick: () -> Unit) {
                 overflow = TextOverflow.Ellipsis,
             )
         }
-        NewsImage(
-            item.imageUrl,
-            item.newsSite,
-            Modifier
-                .size(width = 104.dp, height = 78.dp)
-                .clip(RoundedCornerShape(14.dp)),
-        )
+        if (showImage) {
+            NewsImage(
+                item.imageUrl,
+                item.newsSite,
+                Modifier
+                    .size(width = 104.dp, height = 78.dp)
+                    .clip(RoundedCornerShape(14.dp)),
+            )
+        }
     }
 }
