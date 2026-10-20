@@ -39,11 +39,11 @@ Captured live from the Spaceflight News API by CI, with the sample app on Androi
 
 | Feed with the top story | Search | Reports |
 | :---: | :---: | :---: |
-| <img src="docs/screenshots/phone-feed.png" alt="The phone feed: search field, Articles, Blogs and Reports switch, news site chips, the newest article as a large hero image with its headline, then a list of the latest articles with their images" width="250"> | <img src="docs/screenshots/phone-search.png" alt="Search results for Artemis with the number of matching articles and each result's site, date, headline and image" width="250"> | <img src="docs/screenshots/phone-reports.png" alt="The Reports list with the newest report as the top story and older reports below" width="250"> |
+| <img src="docs/screenshots/phone-feed.png" alt="The phone feed: search field, Articles, Blogs and Reports switch, news site chips, the newest article as a large hero image with its headline, then a list of the latest articles with their images" width="250"> | <img src="docs/screenshots/phone-search.png" alt="Search results for Artemis with the number of matching articles and each result's site, date, headline and image" width="250"> | <img src="docs/screenshots/phone-reports.png" alt="The Reports list with the newest report as the top story and older reports below; a picture already shown above is not repeated" width="250"> |
 
 **Tablet:** list and detail side by side, with the article's image, summary, byline, date, linked launches and events, and an "Open on &lt;site&gt;" button.
 
-<img src="docs/screenshots/tablet-detail.png" alt="A tablet in landscape showing the article list on the left and the newest article's detail with its summary and an Open on button on the right" width="800">
+<img src="docs/screenshots/tablet-detail.png" alt="A tablet in landscape showing the article list on the left and the detail of the newest article with a summary and an Open on button on the right" width="800">
 
 ## Features
 
@@ -229,7 +229,7 @@ For screenshots it opens a fixed screen from an intent extra (used by `scripts/s
 adb shell am start -n io.github.halilozel1903.spaceflightnews.sample/.MainActivity --es scene search
 ```
 
-`scene` is one of `feed` (the newest articles), `search` (articles matching "Artemis"), `reports` (the newest reports) or `tablet` (list and the newest article side by side). Scenes load live data through the same client as a normal launch, and log `SCENE_READY` once the data and every image on screen have loaded. CI captures the phone scenes on a Pixel 7 and `tablet` on a Pixel Tablet in landscape, and fails instead of capturing when a scene shows an error, does not finish loading, misses the expected text or is blank. There is no offline or demo data in the sample.
+`scene` is one of `feed` (the newest articles), `search` (articles matching "Artemis"), `reports` (the newest reports) or `tablet` (list and detail side by side; a tablet opens the newest story that has an image and a real summary). Scenes load live data through the same client as a normal launch, and log `SCENE_READY` once the data and every image on screen have loaded. CI captures the phone scenes on a Pixel 7 and `tablet` on a Pixel Tablet in landscape, and fails instead of capturing when a scene shows an error, does not finish loading, misses the expected text or is blank. There is no offline or demo data in the sample.
 
 ## Project structure
 

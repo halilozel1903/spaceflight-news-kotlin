@@ -82,7 +82,7 @@ fun ReaderApp(scene: Scene?, repository: NewsRepository) {
                     query = query,
                     onQueryChange = { query = it },
                     onSearch = { search = query.trim() },
-                    selected = if (wide) selected ?: (feed.first as? Load.Ready)?.value?.items?.firstOrNull() else null,
+                    selected = if (wide) selected ?: openByDefault(feed.items) else null,
                     onSelect = { selected = it },
                     onRetry = { reload++ },
                     listState = listState,
@@ -99,8 +99,8 @@ fun ReaderApp(scene: Scene?, repository: NewsRepository) {
                             .background(MaterialTheme.colorScheme.outlineVariant),
                     )
                     Box(Modifier.weight(0.58f)) {
-                        // On tablets the newest item is open until another one is picked.
-                        val item = selected ?: (feed.first as? Load.Ready)?.value?.items?.firstOrNull()
+                        // On tablets a story is always open: the newest one worth reading until another one is picked.
+                        val item = selected ?: openByDefault(feed.items)
                         when {
                             item != null -> DetailPane(item = item, onBack = null)
                             feed.first is Load.Ready -> EmptyDetail()
@@ -120,3 +120,10 @@ fun ReaderApp(scene: Scene?, repository: NewsRepository) {
         }
     }
 }
+
+/**
+ * The story a tablet opens before one is picked: the newest with an image and a real summary (some sources only
+ * send a line like "From the ESA Blogs."), or simply the newest.
+ */
+fun openByDefault(items: List<NewsItem>): NewsItem? =
+    items.firstOrNull { it.imageUrl.isNotBlank() && it.summary.trim().length >= 160 } ?: items.firstOrNull()

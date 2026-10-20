@@ -22,7 +22,7 @@ import okhttp3.OkHttpClient
  * - `feed`: the newest articles with the top story as a hero
  * - `search`: articles matching "Artemis"
  * - `reports`: the newest reports
- * - `tablet`: the article list and the newest article's detail side by side (tablets in landscape)
+ * - `tablet`: the article list and the detail of the newest article with a summary, side by side (tablets in landscape)
  */
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

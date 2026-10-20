@@ -5,7 +5,7 @@
 # that shows an error or does not finish loading fails the run. Every capture is also checked for the expected text
 # and for a blank image.
 #
-#   bash scripts/screenshots.sh tablet   # pixel_tablet in landscape: article list and the newest article's detail
+#   bash scripts/screenshots.sh tablet   # pixel_tablet in landscape: article list and the newest article with a summary
 #   bash scripts/screenshots.sh phone    # pixel_7: the feed, a search for "Artemis" and the reports
 set -euo pipefail
 source "$(dirname "$0")/screenshot-lib.sh"
