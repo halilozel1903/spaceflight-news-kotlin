@@ -1,0 +1,35 @@
+{
+  "count": 12302,
+  "next": "https://api.spaceflightnewsapi.net/v4/articles/?has_launch=true&limit=1&offset=1",
+  "previous": null,
+  "results": [
+    {
+      "id": 40430,
+      "title": "APOD: 2026 October 19 – Treble Clef: Unusual X-ray Hot Radio Source",
+      "authors": [
+        {
+          "name": "NASA",
+          "socials": null
+        }
+      ],
+      "url": "https://science.nasa.gov/image-article/apod-2026-october-19-treble-clef-unusual-x-ray-hot-radio-source/",
+      "image_url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/trebleclef.jpg",
+      "news_site": "NASA",
+      "summary": "An unusual radio source that glows in hot X-rays, pictured in today's Astronomy Picture of the Day.",
+      "published_at": "2026-10-19T04:05:00Z",
+      "updated_at": "2026-10-19T09:41:34.270231Z",
+      "featured": false,
+      "launches": [
+        {
+          "launch_id": "0a5d89b0-aa14-4140-b72d-fbcc8340b222",
+          "provider": "Launch Library 2"
+        },
+        {
+          "launch_id": "283c3310-50e9-49fb-992d-38b71e02c36f",
+          "provider": "Launch Library 2"
+        }
+      ],
+      "events": []
+    }
+  ]
+}

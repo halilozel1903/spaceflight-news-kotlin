@@ -1,0 +1,31 @@
+{
+  "id": 38745,
+  "title": "NASA awards nearly $600 million in lunar lander missions",
+  "authors": [
+    {
+      "name": "Jeff Foust",
+      "socials": {
+        "x": "https://x.com/jeff_foust",
+        "youtube": "",
+        "instagram": "",
+        "linkedin": "https://www.linkedin.com/in/jefffoust",
+        "mastodon": "https://mastodon.social/@jfoust",
+        "bluesky": "https://bsky.app/profile/jfoust.bsky.social"
+      }
+    }
+  ],
+  "url": "https://spacenews.com/nasa-awards-nearly-600-million-in-lunar-lander-missions/",
+  "image_url": "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/06/landers-june2026.jpeg?fit=1024%2C576&ssl=1",
+  "news_site": "SpaceNews",
+  "summary": "NASA has selected companies for new commercial lunar lander missions worth nearly $600 million.",
+  "published_at": "2026-06-30T23:57:29Z",
+  "updated_at": "2026-07-01T06:23:46.544790Z",
+  "featured": false,
+  "launches": [],
+  "events": [
+    {
+      "event_id": 1493,
+      "provider": "Launch Library 2"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "count": 2181,
+  "next": "https://api.spaceflightnewsapi.net/v4/blogs/?limit=2&offset=2",
+  "previous": null,
+  "results": [
+    {
+      "id": 2559,
+      "title": "Spacewalk Preps and Advanced Biomedical Research Begin Week",
+      "authors": [
+        {
+          "name": "NASA",
+          "socials": null
+        }
+      ],
+      "url": "https://www.nasa.gov/blogs/spacestation/2026/10/19/spacewalk-preps-and-advanced-biomedical-research-begin-week/",
+      "image_url": "https://images-assets.nasa.gov/image/iss075e0103073/iss075e0103073~large.jpg",
+      "news_site": "NASA",
+      "summary": "The crew aboard the station prepared for upcoming spacewalks and started a new set of biomedical studies.",
+      "published_at": "2026-10-19T16:22:09Z",
+      "updated_at": "2026-10-19T16:41:03.033741Z",
+      "featured": false,
+      "launches": [],
+      "events": []
+    },
+    {
+      "id": 2558,
+      "title": "Crew Unpacks Dragon and Begins Activating New Science Experiments",
+      "authors": [
+        {
+          "name": "NASA",
+          "socials": null
+        }
+      ],
+      "url": "https://www.nasa.gov/blogs/spacestation/2026/10/16/crew-unpacks-dragon-and-begins-activating-new-science-experiments/",
+      "image_url": "https://www.nasa.gov/wp-content/uploads/2026/10/iss-10-15-26.png",
+      "news_site": "NASA",
+      "summary": "Astronauts unloaded the newly arrived Dragon cargo craft and switched on new experiments.",
+      "published_at": "2026-10-16T17:15:06Z",
+      "updated_at": "2026-10-16T17:20:13.982361Z",
+      "featured": false,
+      "launches": [],
+      "events": []
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "count": 4,
+  "next": "https://api.spaceflightnewsapi.net/v4/reports/?limit=2&offset=2&search=starliner",
+  "previous": null,
+  "results": [
+    {
+      "id": 1662,
+      "title": "Starliner arrives safely back on Earth",
+      "authors": [],
+      "url": "https://starlinerupdates.com/starliner-arrives-safely-back-on-earth/",
+      "image_url": "https://boeing-jtti.s3.amazonaws.com/wp-content/uploads/2023/02/13165520/docking_with_earth_in_background_out_window.png",
+      "news_site": "Boeing",
+      "summary": "Boeing's Starliner landed at White Sands in New Mexico after its long stay at the International Space Station.",
+      "published_at": "2024-09-07T04:14:32Z",
+      "updated_at": "2024-09-07T04:18:06.656360Z"
+    },
+    {
+      "id": 1661,
+      "title": "Starliner heads back to Earth",
+      "authors": [],
+      "url": "https://starlinerupdates.com/starliner-heads-back-to-earth/",
+      "image_url": "https://boeing-jtti.s3.amazonaws.com/wp-content/uploads/2023/02/13165520/docking_with_earth_in_background_out_window.png",
+      "news_site": "Boeing",
+      "summary": "Starliner undocked from the space station on Friday, September 6, ahead of a landing at White Sands.",
+      "published_at": "2024-09-06T22:05:02Z",
+      "updated_at": "2024-09-06T22:08:02.942704Z"
+    }
+  ]
+}
