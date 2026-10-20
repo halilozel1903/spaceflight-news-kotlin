@@ -84,20 +84,21 @@ fun DetailPane(item: NewsItem, onBack: (() -> Unit)?) {
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
-            if (item.summary.isNotBlank()) {
-                Text(item.summary.trim(), style = MaterialTheme.typography.bodyLarge)
+            // The way to the full story stays in view above the summary, however long the summary is.
+            Button(onClick = { uriHandler.openUri(item.url) }) {
+                Text("Open on ${item.newsSite}")
+                Spacer(Modifier.size(8.dp))
+                ArrowOutIcon(MaterialTheme.colorScheme.onPrimary, Modifier.size(16.dp))
+            }
+            val summary = item.readableSummary()
+            if (summary.isNotBlank()) {
+                Text(summary, style = MaterialTheme.typography.bodyLarge)
             } else {
                 Text(
                     "${item.newsSite} did not include a summary.",
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
-            }
-            Spacer(Modifier.size(4.dp))
-            Button(onClick = { uriHandler.openUri(item.url) }) {
-                Text("Open on ${item.newsSite}")
-                Spacer(Modifier.size(8.dp))
-                ArrowOutIcon(MaterialTheme.colorScheme.onPrimary, Modifier.size(16.dp))
             }
         }
     }

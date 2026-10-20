@@ -122,8 +122,8 @@ fun ReaderApp(scene: Scene?, repository: NewsRepository) {
 }
 
 /**
- * The story a tablet opens before one is picked: the newest with an image and a real summary (some sources only
+ * The story a tablet opens before one is picked: the newest with an image and a real summary that fits the pane (some sources only
  * send a line like "From the ESA Blogs."), or simply the newest.
  */
 fun openByDefault(items: List<NewsItem>): NewsItem? =
-    items.firstOrNull { it.imageUrl.isNotBlank() && it.summary.trim().length >= 160 } ?: items.firstOrNull()
+    items.firstOrNull { it.imageUrl.isNotBlank() && it.readableSummary().length in 160..520 } ?: items.firstOrNull()

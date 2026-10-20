@@ -34,3 +34,14 @@ fun Int.grouped(): String = String.format(Locale.US, "%,d", this)
 
 /** "1 launch", "2 launches". */
 fun plural(count: Int, one: String, many: String): String = if (count == 1) "1 $one" else "$count $many"
+
+/**
+ * The summary without the feed footer some WordPress sites append ("The post X appeared first on Y.") and with
+ * line breaks collapsed.
+ */
+fun NewsItem.readableSummary(): String =
+    summary.lines()
+        .map { it.trim() }
+        .filterNot { it.startsWith("The post ") && " appeared first on " in it }
+        .filter { it.isNotEmpty() }
+        .joinToString(" ")
